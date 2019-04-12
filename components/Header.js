@@ -5,7 +5,10 @@ const Header = ({ router: { pathname } }) => (
   <header>
     <div className='container'>
       <Link prefetch href='/'>
-        <img src='/static/logo.svg' width='32' height='32' />
+        <img src='/static/logo.svg' height='32' />
+      </Link>
+      <Link prefetch href="/browse">
+        <a>Browse</a>
       </Link>
     </div>
 
