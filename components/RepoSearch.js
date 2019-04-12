@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { GoRepo } from 'react-icons/go'
 import Link from 'next/link'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -38,11 +39,12 @@ export default function RepoSearch({ setRepo }) {
   const handleChange = debounce(evt => setQuery(evt.target.value), 500)
   return (
     <div className="container">
+      <h1 style={{ marginBottom: '48px' }}>Choose a GitHub Project.</h1>
       <TextInput placeholder='Repository name' onChange={handleChange} />
       <Query query={repoSearch} variables={{ query }}>
         {({ loading, error, data: { search } }) => {
           if (error) return <span color="red">Error loading user</span>
-          if (loading) return <p>loading</p>
+          if (loading) return <p>Loading...</p>
 
           return (
             <div className="results">
@@ -52,6 +54,9 @@ export default function RepoSearch({ setRepo }) {
                   onClick={() => selectRepo(node.id)}
                   className={selected === node.id ? 'selected' : ''}
                 >
+                  <span style={{ fontSize: '24px', margin: '4px 8px -4px 0'}}>
+                    <GoRepo />
+                  </span>
                   {node.nameWithOwner}
                 </p>
               )}
@@ -61,9 +66,11 @@ export default function RepoSearch({ setRepo }) {
       </Query>
 
       {selected && (
-        <Link href={`/fund/repo?id=${selected}`}>
-          <Button>Continue</Button>
-        </Link>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '32px' }}>
+          <Link href={`/fund/repo?id=${selected}`}>
+            <Button>Continue</Button>
+          </Link>
+        </div>
       )}
 
       <style jsx>{`
@@ -82,6 +89,9 @@ export default function RepoSearch({ setRepo }) {
         }
 
         p {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
           cursor: pointer;
         }
       `}</style>

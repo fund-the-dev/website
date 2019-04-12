@@ -1,6 +1,13 @@
-export default ({ placeholder, onChange }) => (
-  <div>
-    <input type='text' placeholder={placeholder} onChange={onChange} />
+export default ({ placeholder, onChange, type = 'text' }) => (
+  <div style={{ width: '100%'}}>
+    <input
+      type={type}
+      placeholder={placeholder}
+      onChange={onChange}
+      min="0.01"
+      step="0.01"
+      max="2500"
+    />
     <style jsx>{`
       input {
         border: 1px solid #D2DAF0;

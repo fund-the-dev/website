@@ -2,15 +2,15 @@ import { withRouter } from 'next/router'
 import App from '../../components/App'
 import Header from '../../components/Header'
 import Section from '../../components/Section'
-import IssueSelector from '../../components/IssueSelector'
+import Payment from '../../components/Payment'
 
 function Fund({ router }) {
   return (
     <App>
       <Header />
       <Section>
-        <h1>Select an issue to fund.</h1>
-        <IssueSelector repoId={router.query.id} />
+        <h1 style={{ marginBottom: '32px' }}>How much will you pay?</h1> 
+        <Payment issueId={router.query.issue} />
       </Section>
     </App>
   )

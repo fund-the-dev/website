@@ -8,6 +8,16 @@ export default ({ children }) => (
           monospace, serif;
         box-sizing: border-box;
       }
+
+      h1, h3 {
+        color: #11103E;
+        text-align: center;
+      }
+
+      h3 {
+        font-weight: normal;
+        color: #565678;
+      }
     `}</style>
   </main>
 )
