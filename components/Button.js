@@ -1,4 +1,4 @@
-export default ({ onClick, children }) => [
+export default ({ onClick, disabled, children }) => [
   <a onClick={onClick}>
     {children}
     <style jsx>{`
@@ -26,6 +26,12 @@ export default ({ onClick, children }) => [
 
       a:hover {
         background: #3f47f6;
+      }
+
+      ${ disabled ? `
+        opacity: 0.5;
+        cursor: not-allowed;
+      ` : ''
       }
     `}</style>
   </a>
